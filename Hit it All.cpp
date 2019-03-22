@@ -8,7 +8,8 @@
 #include <conio.h>
 #include <math.h> //for sin in 
 #include "console.h"
-char* BUBBLE = '*';
+char* BUBBLE = "*";
+char* AIM = "o";
 int colors[WIDTH][HEIGHT];
 int palette[5] = {TRED, TBLUE, TGREEN, TYELLOW, TBLUEGREEN};
 float velocity[2]; 
@@ -16,7 +17,6 @@ float resVelocity = 2;
 float angle = 90;
 int bubbleCoord[2] = {25,40};
 int ballColor = TRED;
-int bubbleCoord[2] = {25,40};
 void controls();
 int X_COORD = 0;
 int Y_COORD = 1;
@@ -37,7 +37,7 @@ int main(){
 	srand(time(NULL));
 	//setScreenSize(WIDTH, HEIGHT);
 	setWindowSize(WIDTH,HEIGHT);
-	wall();
+	//wall();
 	int counter = 0;
 	int y = rand() % (HEIGHT - 20);
 	int x = rand() % WIDTH;

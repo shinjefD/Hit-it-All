@@ -1,10 +1,10 @@
-#include "compiledVariables.h"
+//#include "compiledVariables.h"
 //#include "console.h"
-
+/*
 void wall(){
 
 	
-}
+}*/
 void generateBubbles(int& counter, int &x, int &y){
 	if (counter >= BUBBLECOUNT) return;
 	int color = palette[rand() % 5];
