@@ -1,7 +1,4 @@
 #include <conio.h>
-//#include "allGlobalVariables.h"
-
-void controls();
 
 void controls(){
 	if (kbhit()){
