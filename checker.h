@@ -93,7 +93,7 @@ void sameColorNeighbor(int x, int y, bool start){
 			//putxy(x + i, y + j, BYELLOW, "@");
 			//putxy(x + i, y + j, colors[x + i][y + i] | BWHITE, "@");
 			//printf("%d %d \n", x + i, y + j);
-			if (ballColor == colors[x + i][y + j]  && i != j && !findInBin(x + i, y + j)){ 
+			if (ballColor == colors[x + i][y + j]  && (i != 0 || j != 0) && !findInBin(x + i, y + j)){ 
 				//printf("HIT! \n");
 				printBin();
 				sameColorNeighbor(x + i, y + j, false);
