@@ -5,14 +5,14 @@ void controls(){
 		char key = getch();
 		if (key == ' '){
 			//launch code
-			velocity[0] = resVelocity * cos(angle * (M_PI/180));
-			velocity[1] = resVelocity * sin(angle * (M_PI/180));
+			velocity[X_COORD] = resVelocity * cos(angle * (M_PI/180));
+			velocity[Y_COORD] = resVelocity * sin(angle * (M_PI/180));
 		}
 		fakeAngle = angle;
 		if (key == 'a')
-			angle += 10;
+			angle += 15;
 				
 		if (key == 'd')
-			angle -= 10;
+			angle -= 15; 
 	}
 }
