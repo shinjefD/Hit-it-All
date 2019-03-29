@@ -1,5 +1,3 @@
-void ballChangeColor();
-
 void ballChangeColor(){
 	int checkWallCollision[2];
 	checkWallCollision[X_COORD] = bubbleCoord[X_COORD] + velocity[X_COORD];

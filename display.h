@@ -1,12 +1,12 @@
 void wall(){
 	int color = palette[rand() % 3]; //random color for left wall
 	for(int i = 0; i != 50; i++){
-		colors[i][1] = color;
+		colors[1][i] = color;
 		putxy(1, i, color, WALL);
 	}
 	color = palette[rand() % 3];    //random color for right wall
 	for(int i = 0; i != 50; i++){
-		colors[i][49] = color;
+		colors[49][i] = color;
 		putxy(49, i, color, WALL);
 	}
 }
@@ -35,10 +35,10 @@ void ball(){
 		//random code shit
 	//	isHit = false;
 	//
-	putxy(bubbleCoord[X_COORD], bubbleCoord[Y_COORD], ballColor, " ");
+	putxy(ceil(bubbleCoord[X_COORD]), ceil(bubbleCoord[Y_COORD]), ballColor, " ");
 	bubbleCoord[X_COORD] += velocity[X_COORD];
 	bubbleCoord[Y_COORD] -= velocity[Y_COORD];
-	putxy(bubbleCoord[X_COORD], bubbleCoord[Y_COORD], ballColor, BUBBLE);
+	putxy(ceil(bubbleCoord[X_COORD]), ceil(bubbleCoord[Y_COORD]), ballColor, BUBBLE);
 		//bubbleCoord[X_COORD] = -bubbleCoord[X_COORD];
 }
 

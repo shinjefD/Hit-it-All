@@ -33,9 +33,9 @@ int main(){
 	while (1 == 1) {
 		// cout << "1";
 		controls();
+		ballChangeColor(); //Changes the color of the ball if it hits a wall with respect to its color
 		target();
 		ball();
-		ballChangeColor(); //Changes the color of the ball if it hits a wall with respect to its color
 		collisionChecker();
 		// cout << "2";
 		// cout << "3";

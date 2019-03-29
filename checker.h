@@ -39,7 +39,7 @@ void destroyBin(){
 }
 void collisionChecker(){
 		if (velocity[X_COORD] != 0 && !isHit){
-			int fakeCheckCoord[2];
+			float fakeCheckCoord[2];
 			fakeCheckCoord[X_COORD] = bubbleCoord[X_COORD] + velocity[X_COORD];
 			fakeCheckCoord[Y_COORD] = bubbleCoord[Y_COORD] - velocity[Y_COORD];
 			clearBin();
@@ -85,21 +85,14 @@ bool findInBin(int x, int y){
 }
 
 void sameColorNeighbor(int x, int y, bool start){
-	//putxy(x, y, BYELLOW, " ");
 	if (!start) addToBin(x, y);
-	//printf("CHECKING: %d %d\n", x, y);
 	for (int i = -1; i != 2; i++){
 		for (int j = -1; j != 2; j++){
-			//putxy(x + i, y + j, BYELLOW, "@");
-			//putxy(x + i, y + j, colors[x + i][y + i] | BWHITE, "@");
-			//printf("%d %d \n", x + i, y + j);
 			if (ballColor == colors[x + i][y + j]  && (i != 0 || j != 0) && !findInBin(x + i, y + j)){ 
-				//printf("HIT! \n");
 				printBin();
 				sameColorNeighbor(x + i, y + j, false);
 			}
 			else{
-				//putxy(x + i, y + j, BYELLOW, " ");
 
 			}
 		}

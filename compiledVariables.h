@@ -3,7 +3,7 @@ int palette[3] = {TRED, TRED, TRED};//TBLUE, TGREEN};
 float velocity[2]; 
 float resVelocity = 1;
 float angle = 90;
-int bubbleCoord[2] = {25,30};
+float bubbleCoord[2] = {25,30};
 int ballColor = TRED;
 void controls();
 int X_COORD = 0;
