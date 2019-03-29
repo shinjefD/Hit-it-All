@@ -12,16 +12,18 @@ using namespace std;
 #include "console.h"
 char* BUBBLE = "@";
 char* AIM = "o";
+char* WALL = "|";
 #include "compiledVariables.h"
 #include "display.h"
 #include "manuever.h"
 #include "checker.h"
+#include "collisionWall.h"
 
 int main(){
 	srand(time(NULL));
 	//setScreenSize(WIDTH, HEIGHT);
 	setWindowSize(WIDTH,HEIGHT);
-	//wall();
+	wall();
 	int counter = 0;
 	int y = HEIGHT / 4;
 	int x = WIDTH / 2;
@@ -30,16 +32,15 @@ int main(){
 	
 	while (1 == 1) {
 		// cout << "1";
+		controls();
+		target();
 		ball();
-
+		ballChangeColor(); //Changes the color of the ball if it hits a wall with respect to its color
 		collisionChecker();
 		// cout << "2";
 		// cout << "3";
-		controls();
-		target();
 		Sleep(50);
 	}
 	return 0;
 }
-
 
