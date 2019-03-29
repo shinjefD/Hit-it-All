@@ -1,9 +1,13 @@
 void wall(){
+	int color = palette[rand() % 3]; //random color for left wall
 	for(int i = 0; i != 50; i++){
-		putxy(1, i, TRED, WALL);
+		colors[i][1] = color;
+		putxy(1, i, color, WALL);
 	}
+	color = palette[rand() % 3];    //random color for right wall
 	for(int i = 0; i != 50; i++){
-		putxy(49, i, TBLUE, WALL);
+		colors[i][49] = color;
+		putxy(49, i, color, WALL);
 	}
 }
 
@@ -35,11 +39,6 @@ void ball(){
 	bubbleCoord[X_COORD] += velocity[X_COORD];
 	bubbleCoord[Y_COORD] -= velocity[Y_COORD];
 	putxy(bubbleCoord[X_COORD], bubbleCoord[Y_COORD], ballColor, BUBBLE);
-	int checkWallCollision[2];
-	checkWallCollision[X_COORD] = bubbleCoord[X_COORD] + velocity[X_COORD];
-	checkWallCollision[Y_COORD] = bubbleCoord[Y_COORD] - velocity[X_COORD];
-	if (getConsoleChar(checkWallCollision[X_COORD], checkWallCollision[Y_COORD]) == WALL[0])
-		velocity[X_COORD] = -velocity[X_COORD];
 		//bubbleCoord[X_COORD] = -bubbleCoord[X_COORD];
 }
 
@@ -48,20 +47,20 @@ void target(){
 	if (velocity[X_COORD] * velocity[Y_COORD] == 0 && !isHit) {
 		fakeVelocity[X_COORD] = resVelocity * cos(fakeAngle * (M_PI/180));
 		fakeVelocity[Y_COORD] = resVelocity * sin(fakeAngle * (M_PI/180));
-		fakebubbleCoord[X_COORD] = bubbleCoord[X_COORD];
+		fakebubbleCoord[X_COORD] = bubbleCoord[X_COORD] - 1;
 		fakebubbleCoord[Y_COORD] = bubbleCoord[Y_COORD];
-		for (int i = 0; i != 5; i++){
-			fakebubbleCoord[X_COORD] += fakeVelocity[X_COORD];
-			fakebubbleCoord[Y_COORD] -= fakeVelocity[Y_COORD];
+		for (int i = 0; i != 1; i++){
+			fakebubbleCoord[X_COORD] += 2 * fakeVelocity[X_COORD];
+			fakebubbleCoord[Y_COORD] -= 2 *fakeVelocity[Y_COORD];
 			char* empty = " ";
 			putxy(fakebubbleCoord[X_COORD], fakebubbleCoord[Y_COORD], ballColor, empty);
 		}
 
 		fakebubbleCoord[X_COORD] = bubbleCoord[X_COORD];
 		fakebubbleCoord[Y_COORD] = bubbleCoord[Y_COORD];
-		for (int i = 0; i != 5; i++){
-			fakebubbleCoord[X_COORD] += fakeVelocity[X_COORD];
-			fakebubbleCoord[Y_COORD] -= fakeVelocity[Y_COORD];
+		for (int i = 0; i != 1; i++){
+			fakebubbleCoord[X_COORD] += 2 * fakeVelocity[X_COORD];
+			fakebubbleCoord[Y_COORD] -= 2 *fakeVelocity[Y_COORD];
 			putxy(fakebubbleCoord[X_COORD], fakebubbleCoord[Y_COORD], ballColor, AIM);
 		}
 	}
