@@ -71,6 +71,7 @@ void addToBin(int x, int y){
 	//printf("ADDED %d %d to %d\n", x, y);
 	garbageBin[i][0] = x;
 	garbageBin[i][1] = y;
+	score++;
 }
 
 bool findInBin(int x, int y){

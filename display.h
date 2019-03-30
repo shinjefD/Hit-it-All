@@ -1,13 +1,47 @@
+void welcome(){
+	textcolor(TGREEN);
+	gotoxy(60, 20);
+	printf("    __  ____________   __________   ___    __    __  ");
+	gotoxy(60, 21);
+	printf("   / / / /  _/_  __/  /  _/_  __/  /   |  / /   / /  ");
+	gotoxy(60, 22);
+	printf("  / /_/ // /  / /     / /  / /    / /| | / /   / /   ");
+	gotoxy(60, 23);
+	printf(" / __  // /  / /    _/ /  / /    / ___ |/ /___/ /___ ");
+	gotoxy(60, 24);
+	printf("/_/ /_/___/ /_/    /___/ /_/    /_/  |_/_____/_____/ ");
+	gotoxy(60, 25);                                      
+	printf("             Press any key to continue               ");
+}
+
+void instruction(){
+	textcolor(TGREEN);
+	gotoxy(55, 20);
+	printf("                    How to play?                       ");
+	gotoxy(55, 21);
+	printf("-------------------------------------------------------");
+	gotoxy(55, 22);
+	printf("Press A to move the direction of the ball to the left.");
+	gotoxy(55, 23);
+	printf("Press D to move the direction of the ball to the right.");
+	gotoxy(55, 24);
+	printf("Press SPACE to launch the ball.");
+	gotoxy(55, 25);
+	printf("You only have 10 tries to reach at least 20 points!");
+	gotoxy(55, 26);
+	printf("                GOODLUCK and HAVE FUN!                 ");
+}
+
 void wall(){
 	int color = palette[rand() % 3]; //random color for left wall
-	for(int i = 0; i != 50; i++){
-		colors[1][i] = color;
-		putxy(1, i, color, WALL);
+	for(int i = 0; i != 40; i++){
+		colors[66][i] = color;
+		putxy(66	, i, color, WALL);
 	}
 	color = palette[rand() % 3];    //random color for right wall
-	for(int i = 0; i != 50; i++){
-		colors[49][i] = color;
-		putxy(49, i, color, WALL);
+	for(int i = 0; i != 40; i++){
+		colors[114][i] = color;
+		putxy(114, i, color, WALL);
 	}
 }
 
@@ -33,13 +67,12 @@ void ball(){
 	//if (isHit){
 		//create new player bubble
 		//random code shit
-	//	isHit = false;
-	//
+	    //isHit = false;
+	
 	putxy(ceil(bubbleCoord[X_COORD]), ceil(bubbleCoord[Y_COORD]), ballColor, " ");
 	bubbleCoord[X_COORD] += velocity[X_COORD];
 	bubbleCoord[Y_COORD] -= velocity[Y_COORD];
 	putxy(ceil(bubbleCoord[X_COORD]), ceil(bubbleCoord[Y_COORD]), ballColor, BUBBLE);
-		//bubbleCoord[X_COORD] = -bubbleCoord[X_COORD];
 }
 
 

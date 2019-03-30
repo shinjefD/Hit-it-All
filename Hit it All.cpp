@@ -1,4 +1,4 @@
-#define WIDTH 40
+#define WIDTH 180
 #define HEIGHT 40
 #define BUBBLECOUNT 70
 #define YLIMIT 30
@@ -18,11 +18,17 @@ char* WALL = "|";
 #include "manuever.h"
 #include "checker.h"
 #include "collisionWall.h"
+#include "decision.h"
 
 int main(){
 	srand(time(NULL));
-	//setScreenSize(WIDTH, HEIGHT);
-	setWindowSize(WIDTH,HEIGHT);
+	setWindowSize(WIDTH, HEIGHT);
+	/*welcome();
+	getch();
+	system("cls");
+	instruction();
+	getch();
+	system("cls");*/
 	wall();
 	int counter = 0;
 	int y = HEIGHT / 4;
@@ -30,8 +36,10 @@ int main(){
 	// cout << "0";
 	generateBubbles(counter, x, y);
 	
-	while (1 == 1) {
+	while (1 == 1){
 		// cout << "1";
+		gotoxy(67, 0);
+		printf("Score:%i", score);
 		controls();
 		ballChangeColor(); //Changes the color of the ball if it hits a wall with respect to its color
 		target();
@@ -40,6 +48,12 @@ int main(){
 		// cout << "2";
 		// cout << "3";
 		Sleep(50);
+	}
+	if (score >= 20) win();
+	else{
+		if (tries == 10){
+			gameOver();
+		}
 	}
 	return 0;
 }
