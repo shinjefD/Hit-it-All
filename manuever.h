@@ -9,10 +9,18 @@ void controls(){
 			velocity[Y_COORD] = resVelocity * sin(angle * (M_PI/180.0));
 		}
 		fakeAngle = angle;
-		if (key == 'a')
-			angle += 15;
-				
-		if (key == 'd')
-			angle -= 15; 
+		//printf("%f", angle);
+		//printf("%f", fakeAngle);
+			if (key == 'a'){
+				angle += 20;
+				if (angle > 160)
+					angle = 90;
+			}
+						
+			if (key == 'd'){
+				angle -= 20;
+				if (angle < 20)
+					angle = 90;
+			}
 	}
 }

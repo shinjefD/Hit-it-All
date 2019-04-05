@@ -13,7 +13,7 @@ void printBin(){
 		garbageX = garbageBin[i][X_COORD];
 		garbageY = garbageBin[i][Y_COORD];
 		if (garbageX == -1 || garbageY == -1) break;
-		//printf("BIN: %d %d.", garbageX, garbageY);
+		printf("BIN: %d %d.", garbageX, garbageY);
 		i++; 
 		}
 }
@@ -32,35 +32,40 @@ void destroyBin(){
 		
 		//printf("DESTROYING #%d: %d %d", i, garbageX, garbageY);
 		destroyer(garbageX, garbageY);
-		colors[garbageX][garbageY] = 0;
 		i++;
 	}
 	clearBin();
+	isHit = true;
+
 }
 void collisionChecker(){
 		if (velocity[X_COORD] != 0 && !isHit){
 			float fakeCheckCoord[2];
 			fakeCheckCoord[X_COORD] = bubbleCoord[X_COORD] + velocity[X_COORD];
 			fakeCheckCoord[Y_COORD] = bubbleCoord[Y_COORD] - velocity[Y_COORD];
+			int colorX = (int)ceil(bubbleCoord[X_COORD]);
+			int colorY = (int)ceil(bubbleCoord[Y_COORD]);
+			//printf("%d %d", colorX, colorY);
 			clearBin();
 			if (getConsoleChar(fakeCheckCoord[X_COORD], fakeCheckCoord[Y_COORD]) == BUBBLE[0]){
+				colors[colorX][colorY] = ballColor;
 				//destroyer(bubbleCoord[X_COORD], bubbleCoord[Y_COORD]);
-				isHit = true;
 				velocity[X_COORD] = 0;
 				velocity[Y_COORD] = 0;
 				printBin();
+				
 				sameColorNeighbor(bubbleCoord[X_COORD], bubbleCoord[Y_COORD], true);
 				destroyBin();
-
 			}
+			else if (fakeCheckCoord[Y_COORD] < 1) isHit = true;
 	}
 }
 
 
 void clearBin(){
 	for (int i = 0; i != WIDTH * HEIGHT;  i++){
-		garbageBin[i][0] = -1; 
-		garbageBin[i][1] = -1;
+		garbageBin[i][X_COORD] = -1; 
+		garbageBin[i][Y_COORD] = -1;
 	}
 	
 }
@@ -69,18 +74,17 @@ void addToBin(int x, int y){
 	int i = 0;
 	while (garbageBin[i][0] != -1 && garbageBin[i][1] != -1) i++;
 	//printf("ADDED %d %d to %d\n", x, y);
-	garbageBin[i][0] = x;
-	garbageBin[i][1] = y;
+	garbageBin[i][X_COORD] = x;
+	garbageBin[i][Y_COORD] = y;
 	score++;
 }
 
 bool findInBin(int x, int y){
 	int i = 0;
-	while (garbageBin[i][0] != -1 && garbageBin[i][1] != -1){
-		if (garbageBin[i][0] == x && garbageBin[i][1] == y)
+	while (garbageBin[i][X_COORD] != -1 && garbageBin[i][Y_COORD] != -1){
+		if (garbageBin[i][X_COORD] == x && garbageBin[i][Y_COORD] == y)
 			return true;
-		i++;
-		
+		i++;	
 	}
 	return false;
 }
@@ -90,12 +94,12 @@ void sameColorNeighbor(int x, int y, bool start){
 	for (int i = -1; i != 2; i++){
 		for (int j = -1; j != 2; j++){
 			if (ballColor == colors[x + i][y + j]  && (i != 0 || j != 0) && !findInBin(x + i, y + j)){ 
-				printBin();
+				//printBin();
 				sameColorNeighbor(x + i, y + j, false);
 			}
-			else{
+			//else{
 
-			}
+			//}
 		}
 	}
 	return;
@@ -103,5 +107,10 @@ void sameColorNeighbor(int x, int y, bool start){
 
 void destroyer(int x, int y){
 	putxy(x, y, TBLACK | BBLACK, " ");
-	Sleep(10);
+	colors[x][y] = 0;
+	gotoxy(67, 0);
+	printf("Score:%i", score);
+	/*gotoxy(101, 0);
+	printf("Tries used:%i", tries);*/
+	Sleep(50);
 }

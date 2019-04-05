@@ -1,4 +1,5 @@
-added decision.h
-      win() and gameOver()
-added welcome() and instruction()
-added score++ in addToBin()
+# Hit-it-All
+
+Hey JOSEF!!! HAHAHAHA
+
+Hi Fatsy!!! HAHAHAHA
