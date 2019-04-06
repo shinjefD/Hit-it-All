@@ -6,7 +6,7 @@ void destroyer(int x, int y);
 int garbageBin[WIDTH * HEIGHT][2];
 
 void printBin(){
-	int garbageX = -1;
+	/*int garbageX = -1;
 	int garbageY = -1;
 	int i = 0;
 	while (true){
@@ -15,7 +15,8 @@ void printBin(){
 		if (garbageX == -1 || garbageY == -1) break;
 		printf("BIN: %d %d.", garbageX, garbageY);
 		i++; 
-		}
+		Sleep(50);
+		}*/
 }
 
 void destroyBin(){
@@ -45,7 +46,6 @@ void collisionChecker(){
 			fakeCheckCoord[Y_COORD] = bubbleCoord[Y_COORD] - velocity[Y_COORD];
 			int colorX = (int)ceil(bubbleCoord[X_COORD]);
 			int colorY = (int)ceil(bubbleCoord[Y_COORD]);
-			//printf("%d %d", colorX, colorY);
 			clearBin();
 			if (getConsoleChar(fakeCheckCoord[X_COORD], fakeCheckCoord[Y_COORD]) == BUBBLE[0]){
 				colors[colorX][colorY] = ballColor;
@@ -53,7 +53,6 @@ void collisionChecker(){
 				velocity[X_COORD] = 0;
 				velocity[Y_COORD] = 0;
 				printBin();
-				
 				sameColorNeighbor(bubbleCoord[X_COORD], bubbleCoord[Y_COORD], true);
 				destroyBin();
 			}
@@ -110,7 +109,5 @@ void destroyer(int x, int y){
 	colors[x][y] = 0;
 	gotoxy(67, 0);
 	printf("Score:%i", score);
-	/*gotoxy(101, 0);
-	printf("Tries used:%i", tries);*/
 	Sleep(50);
 }

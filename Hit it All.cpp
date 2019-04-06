@@ -18,7 +18,7 @@ char* WALLTOP = "_";
 #include "checker.h"
 #include "collisionWall.h"
 #include "decision.h"
-#include <iostream>
+
 int main(){
 	srand(time(NULL));
 	setWindowSize(WIDTH, HEIGHT);

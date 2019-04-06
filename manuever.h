@@ -12,14 +12,14 @@ void controls(){
 		//printf("%f", angle);
 		//printf("%f", fakeAngle);
 			if (key == 'a'){
-				angle += 20;
-				if (angle > 160)
+				angle += 15;
+				if (angle > 165)
 					angle = 90;
 			}
 						
 			if (key == 'd'){
-				angle -= 20;
-				if (angle < 20)
+				angle -= 15;
+				if (angle < 15)
 					angle = 90;
 			}
 	}

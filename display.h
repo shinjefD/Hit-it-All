@@ -64,29 +64,10 @@ void generateBubbles(int& counter, int x, int y){
 	int stepY = (rand() % 3) - 1;
 	int newX = x + stepX;
 	int newY = y + stepY;
-	int bubbles = 0;
-	//gotoxy(0, 0);
-	//std::cout << newX << ' ' << newY;	
-	
 	if (newX <= 69 || newX >= 110  || newY <= 3 || newY >= YLIMIT || (stepX == 0 && stepY == 0)) {
 		generateBubbles(counter, x, y);
 		return;
 	}
-	/*
-	for (int i = -1; i <= 1; i++){
-		for (int j = -1; j <= 1; j++){
-			if (getConsoleChar(x + i, y + j) == BUBBLE[0])
-				bubbles++;
-		}
-	}
-	
-	if (bubbles == 9){
-		x = (rand() % (110 - 69)) + 69;
-		y = (rand() % (30 - 3)) + 3; //1st solution to bara
-		generateBubbles(counter, x, y);
-		return;
-	}
-	*/
 	if (getConsoleChar(newX, newY) != BUBBLE[0]) {
 		counter++;
 	}
@@ -119,7 +100,7 @@ void ball(){
 
 
 void target(){
-	if (velocity[X_COORD] * velocity[Y_COORD] == 0 && !isHit) {
+	/*if (velocity[X_COORD] * velocity[Y_COORD] == 0 && !isHit) {
 		fakebubbleCoord[X_COORD] = bubbleCoord[X_COORD];
 		fakebubbleCoord[Y_COORD] = bubbleCoord[Y_COORD];
 		for (int i = 0; i != 3; i++){
@@ -139,5 +120,5 @@ void target(){
 			fakebubbleCoord[Y_COORD] -= 2 * fakeVelocity[Y_COORD];
 			putxy(ceil(fakebubbleCoord[X_COORD]), ceil(fakebubbleCoord[Y_COORD]), ballColor, AIM);
 		}
-	}			
+	}*/			
 }
