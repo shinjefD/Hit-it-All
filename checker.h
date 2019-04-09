@@ -3,9 +3,9 @@ void clearBin();
 void addToBin(int x, int y);
 void sameColorNeighbor(int x, int y, bool start);
 void destroyer(int x, int y);
-int garbageBin[WIDTH * HEIGHT][2];
 
 void destroyBin(){
+	//called to remove all the coordinates of bubbles stored in garbageBin array
 	int garbageX = 0;
 	int garbageY = 0;
 	int i = 0;
@@ -15,14 +15,15 @@ void destroyBin(){
 		if (garbageX == -1 || garbageY == -1){ 
 			break;
 		}
-		destroyer(garbageX, garbageY);
+		destroyer(garbageX, garbageY); //removes the bubble in the given coordinates
 		i++;
 	}
-	clearBin();
-	isHit = true;
+	clearBin(); //clears garbageBin array
+	isHit = true; //creates a new player bubble
 }
 
 void collisionChecker(){
+		//checks if the ball hits a bubble or the upper wall
 		if (velocity[X_COORD] != 0 && !isHit){
 			float fakeCheckCoord[2];
 			fakeCheckCoord[X_COORD] = bubbleCoord[X_COORD] + velocity[X_COORD];
@@ -43,6 +44,7 @@ void collisionChecker(){
 
 
 void clearBin(){
+	//clears the coordinates in garbageBin array
 	for (int i = 0; i != WIDTH * HEIGHT;  i++){
 		garbageBin[i][X_COORD] = -1; 
 		garbageBin[i][Y_COORD] = -1;
@@ -51,6 +53,8 @@ void clearBin(){
 }
 
 void addToBin(int x, int y){
+	//adds the coordinates in garbageBin array
+	//increments the score of the game
 	int i = 0;
 	while (garbageBin[i][0] != -1 && garbageBin[i][1] != -1) i++;
 	garbageBin[i][X_COORD] = x;
@@ -59,6 +63,7 @@ void addToBin(int x, int y){
 }
 
 bool findInBin(int x, int y){
+	//determine if the coordinates is in garbageBin array
 	int i = 0;
 	while (garbageBin[i][X_COORD] != -1 && garbageBin[i][Y_COORD] != -1){
 		if (garbageBin[i][X_COORD] == x && garbageBin[i][Y_COORD] == y)
@@ -69,6 +74,7 @@ bool findInBin(int x, int y){
 }
 
 void sameColorNeighbor(int x, int y, bool start){
+	//determine if the bubbles near the ball is the same color 
 	if (!start) addToBin(x, y);
 	for (int i = -1; i != 2; i++){
 		for (int j = -1; j != 2; j++){
@@ -81,10 +87,11 @@ void sameColorNeighbor(int x, int y, bool start){
 }
 
 void destroyer(int x, int y){
-	system("call music.bat");
+	//removes the bubbles in all the coordinates stored in garbageBin array
+	//updates the score
 	putxy(x, y, TBLACK | BBLACK, " ");
 	colors[x][y] = 0;
 	gotoxy(67, 0);
 	printf("Score:%i", score);
-	Sleep(50);
+	Sleep(30);
 }
