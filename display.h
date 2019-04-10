@@ -27,7 +27,7 @@ void instruction(){														//prints the mechanics of the game
 	gotoxy(60, 24);
 	printf("Press SPACE to launch the ball.");
 	gotoxy(60, 25);
-	printf("You only have 10 tries to reach at least 70 points!");
+	printf("You only have 10 tries to reach at least 50 points!");
 	gotoxy(60, 26);
 	printf("                GOODLUCK and HAVE FUN!                 ");
 }
@@ -71,7 +71,7 @@ void generateBubbles(int& counter, int x, int y){
 	if (getConsoleChar(newX, newY) != BUBBLE[0]) { //checks if newX and newY has no bubble to increment the number of bubbles
 		counter++;
 	}
-	generateBubbles(counter, newX, newY); //
+	generateBubbles(counter, newX, newY); //generates the new bubble
 	return;
 }
 
@@ -83,6 +83,7 @@ void ball(){
 		angle = 90;
 		fakeAngle = 90;
 	    isHit = false;
+	    isWall = false;
 	    tries++;
 	    gotoxy(101, 0);
 		printf("Tries used:%i", tries);
@@ -95,6 +96,9 @@ void ball(){
 	}
 	//prints the ball's movement
 	putxy(ceil(bubbleCoord[X_COORD]), ceil(bubbleCoord[Y_COORD]), ballColor, " ");
+	if (isWall){
+		velocity[Y_COORD] = resVelocity * sin(angle * (M_PI/180.0)) - 0.1; //air resistance
+	}
 	bubbleCoord[X_COORD] += velocity[X_COORD];
 	bubbleCoord[Y_COORD] -= velocity[Y_COORD];
 	putxy(ceil(bubbleCoord[X_COORD]), ceil(bubbleCoord[Y_COORD]), ballColor, BUBBLE);

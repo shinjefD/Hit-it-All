@@ -43,7 +43,7 @@ int main(){
 		collisionChecker(); //checks if the hits a bubble or the upper wall
 		target(); //prints the aim for the balls direction
 		ball(); //prints the movements of the ball
-		if (score >= 70) win(); //clears the screen and prints a victory message
+		if (score >= 50) win(); //clears the screen and prints a victory message
 		if (tries == 10) gameOver(); //clears the screen and prints a defeat message
 		Sleep(50);
 	}	

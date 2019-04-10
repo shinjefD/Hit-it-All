@@ -15,4 +15,6 @@ float fakeAngle = 90; //angle for target()
 int score = 0; //score of the user
 int tries = 0; //tries used of the user
 bool isHit = false; //boolean used for ball(), target()
+bool isWall = false; //bollean used for ballChangeColor();
 int garbageBin[WIDTH * HEIGHT][2]; //temporary array for bubbles to be remove
+

@@ -1,3 +1,4 @@
+void destroyBin();
 void collisionChecker();
 void clearBin();
 void addToBin(int x, int y);
@@ -24,21 +25,21 @@ void destroyBin(){
 
 void collisionChecker(){
 		//checks if the ball hits a bubble or the upper wall
-		if (velocity[X_COORD] != 0 && !isHit){
-			float fakeCheckCoord[2];
-			fakeCheckCoord[X_COORD] = bubbleCoord[X_COORD] + velocity[X_COORD];
-			fakeCheckCoord[Y_COORD] = bubbleCoord[Y_COORD] - velocity[Y_COORD];
-			int colorX = (int)ceil(bubbleCoord[X_COORD]);
-			int colorY = (int)ceil(bubbleCoord[Y_COORD]);
-			clearBin();
-			if (getConsoleChar(fakeCheckCoord[X_COORD], fakeCheckCoord[Y_COORD]) == BUBBLE[0]){
-				colors[colorX][colorY] = ballColor;
-				velocity[X_COORD] = 0;
-				velocity[Y_COORD] = 0;
-				sameColorNeighbor(bubbleCoord[X_COORD], bubbleCoord[Y_COORD], true);
-				destroyBin();
+	if (velocity[X_COORD] != 0 && !isHit){
+		float fakeCheckCoord[2];
+		fakeCheckCoord[X_COORD] = bubbleCoord[X_COORD] + velocity[X_COORD];
+		fakeCheckCoord[Y_COORD] = bubbleCoord[Y_COORD] - velocity[Y_COORD];
+		int colorX = (int)ceil(bubbleCoord[X_COORD]);
+		int colorY = (int)ceil(bubbleCoord[Y_COORD]);
+		clearBin();
+		if (getConsoleChar(fakeCheckCoord[X_COORD], fakeCheckCoord[Y_COORD]) == BUBBLE[0]){
+			colors[colorX][colorY] = ballColor;
+			velocity[X_COORD] = 0;
+			velocity[Y_COORD] = 0;
+			sameColorNeighbor(bubbleCoord[X_COORD], bubbleCoord[Y_COORD], true);
+			destroyBin();
 			}
-			else if (fakeCheckCoord[Y_COORD] < 1) isHit = true;
+		else if (fakeCheckCoord[Y_COORD] < 1) isHit = true;
 	}
 }
 
@@ -78,7 +79,7 @@ void sameColorNeighbor(int x, int y, bool start){
 	if (!start) addToBin(x, y);
 	for (int i = -1; i != 2; i++){
 		for (int j = -1; j != 2; j++){
-			if (ballColor == colors[x + i][y + j]  && (i != 0 || j != 0) && !findInBin(x + i, y + j)){ 
+			if (ballColor == colors[x + i][y + j] && (i != 0 || j != 0) && !findInBin(x + i, y + j)){ 
 				sameColorNeighbor(x + i, y + j, false);
 			}
 		}
