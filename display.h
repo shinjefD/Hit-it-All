@@ -1,20 +1,42 @@
-void welcome(){															//prints the logo of the game
+void welcome(){	//prints the logo of the game
 	textcolor(TGREEN);
-	gotoxy(65, 20);														
-	printf("    __  ____________   __________   ___    __    __  ");
-	gotoxy(65, 21);
-	printf("   / / / /  _/_  __/  /  _/_  __/  /   |  / /   / /  ");
-	gotoxy(65, 22);
-	printf("  / /_/ // /  / /     / /  / /    / /| | / /   / /   ");
-	gotoxy(65, 23);
-	printf(" / __  // /  / /    _/ /  / /    / ___ |/ /___/ /___ ");
-	gotoxy(65, 24);
-	printf("/_/ /_/___/ /_/    /___/ /_/    /_/  |_/_____/_____/ ");
-	gotoxy(65, 25);                                      
-	printf("             Press any key to continue               ");
+	gotoxy(10, 10);														
+	printf("HHHHHHHHH     HHHHHHHHH  iiii           tttt                 iiii           tttt                              AAA               lllllll lllllll ");
+	gotoxy(10, 11);	
+	printf("H:::::::H     H:::::::H i::::i       ttt:::t                i::::i       ttt:::t                             A:::A              l:::::l l:::::l ");
+	gotoxy(10, 12);	
+	printf("H:::::::H     H:::::::H  iiii        t:::::t                 iiii        t:::::t                            A:::::A             l:::::l l:::::l ");
+	gotoxy(10, 13);	
+	printf("HH::::::H     H::::::HH              t:::::t                             t:::::t                           A:::::::A            l:::::l l:::::l ");
+	gotoxy(10, 14);	
+	printf(" H:::::H     H:::::H  iiiiiii ttttttt:::::ttttttt         iiiiiii ttttttt:::::ttttttt                    A:::::::::A            l::::l  l::::l 	");
+	gotoxy(10, 15);	
+	printf("  H:::::H     H:::::H  i:::::i t:::::::::::::::::t         i:::::i t:::::::::::::::::t                   A:::::A:::::A           l::::l  l::::l ");
+	gotoxy(10, 16);	
+	printf("  H::::::HHHHH::::::H   i::::i t:::::::::::::::::t          i::::i t:::::::::::::::::t                  A:::::A A:::::A          l::::l  l::::l ");
+	gotoxy(10, 17);	
+	printf("  H:::::::::::::::::H   i::::i tttttt:::::::tttttt          i::::i tttttt:::::::tttttt                 A:::::A   A:::::A         l::::l  l::::l ");
+	gotoxy(10, 18);	
+	printf("  H:::::::::::::::::H   i::::i       t:::::t                i::::i       t:::::t                      A:::::A     A:::::A        l::::l  l::::l ");
+	gotoxy(10, 19);	
+	printf("  H::::::HHHHH::::::H   i::::i       t:::::t                i::::i       t:::::t                     A:::::AAAAAAAAA:::::A       l::::l  l::::l ");
+	gotoxy(10, 20);	
+	printf("  H:::::H     H:::::H   i::::i       t:::::t                i::::i       t:::::t                    A:::::::::::::::::::::A      l::::l  l::::l ");
+	gotoxy(10, 21);	
+	printf("  H:::::H     H:::::H   i::::i       t:::::t    tttttt      i::::i       t:::::t    tttttt         A:::::AAAAAAAAAAAAA:::::A     l::::l  l::::l ");
+	gotoxy(10, 22);	
+	printf("HH::::::H     H::::::HHi::::::i      t::::::tttt:::::t     i::::::i      t::::::tttt:::::t        A:::::A             A:::::A   l::::::ll::::::l");
+	gotoxy(10, 23);	
+	printf("H:::::::H     H:::::::Hi::::::i      tt::::::::::::::t     i::::::i      tt::::::::::::::t       A:::::A               A:::::A  l::::::ll::::::l");
+	gotoxy(10, 24);	
+	printf("H:::::::H     H:::::::Hi::::::i        tt:::::::::::tt     i::::::i        tt:::::::::::tt      A:::::A                 A:::::A l::::::ll::::::l");
+	gotoxy(10, 25);	
+	printf("HHHHHHHHH     HHHHHHHHHiiiiiiii          ttttttttttt       iiiiiiii          ttttttttttt       AAAAAAA                   AAAAAAAllllllllllllllll");
+	gotoxy(10, 27);	
+	printf("                                                           Press Any Key to Continue...                                                         ");
 }
 
-void instruction(){														//prints the mechanics of the game
+void instruction(){	//prints the mechanics of the game
 	textcolor(TGREEN);
 	gotoxy(60, 20);														
 	printf("                    How to play?                       ");
@@ -80,6 +102,7 @@ void ball(){
 		//create new player bubble
 		//increments and updates the tries used
 		//randomizes the color of the wall
+		//removes air resistance effect
 		angle = 90;
 		fakeAngle = 90;
 	    isHit = false;
@@ -144,5 +167,5 @@ void target(){
 			fakebubbleCoord[Y_COORD] -= i * (resVelocity * (sin((fakeAngle) * (M_PI / 180.0))));
 			putxy(ceil(fakebubbleCoord[X_COORD]), ceil(fakebubbleCoord[Y_COORD]), TYELLOW | BBLACK, "o");
 		}
-	}		
+	}
 }

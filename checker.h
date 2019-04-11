@@ -20,7 +20,7 @@ void destroyBin(){
 		i++;
 	}
 	clearBin(); //clears garbageBin array
-	isHit = true; //creates a new player bubble
+	isHit = true; //triggers new player bubble
 }
 
 void collisionChecker(){
@@ -29,17 +29,17 @@ void collisionChecker(){
 		float fakeCheckCoord[2];
 		fakeCheckCoord[X_COORD] = bubbleCoord[X_COORD] + velocity[X_COORD];
 		fakeCheckCoord[Y_COORD] = bubbleCoord[Y_COORD] - velocity[Y_COORD];
-		int colorX = (int)ceil(bubbleCoord[X_COORD]);
-		int colorY = (int)ceil(bubbleCoord[Y_COORD]);
-		clearBin();
 		if (getConsoleChar(fakeCheckCoord[X_COORD], fakeCheckCoord[Y_COORD]) == BUBBLE[0]){
+			int colorX = (int)ceil(bubbleCoord[X_COORD]);
+			int colorY = (int)ceil(bubbleCoord[Y_COORD]);
 			colors[colorX][colorY] = ballColor;
 			velocity[X_COORD] = 0;
 			velocity[Y_COORD] = 0;
+			clearBin();
 			sameColorNeighbor(bubbleCoord[X_COORD], bubbleCoord[Y_COORD], true);
 			destroyBin();
 			}
-		else if (fakeCheckCoord[Y_COORD] < 1) isHit = true;
+		else if (fakeCheckCoord[Y_COORD] < 1) isHit = true; //prevents the launched bubble from exceeding the upper wall
 	}
 }
 

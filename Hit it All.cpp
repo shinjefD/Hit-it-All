@@ -1,5 +1,5 @@
 #define WIDTH 180  
-#define HEIGHT 40
+#define HEIGHT 50
 #define BUBBLECOUNT 300 //total bubble count in the game
 #define YLIMIT 30
 #include <stdio.h> //for printf()
@@ -20,8 +20,8 @@ char* WALLTOP = "_";
 #include "decision.h" //win(), lose()
 
 int main(){
-	srand(time(NULL));
-	setWindowSize(WIDTH, HEIGHT);
+	srand(time(0));
+	setWindowSize(HEIGHT, WIDTH);
 	welcome(); //displays the logo of the game
 	getch();
 	system("cls");
